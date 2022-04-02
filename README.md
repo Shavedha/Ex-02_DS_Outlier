@@ -18,33 +18,29 @@ Set the range for z-score and find IQR
 ### STEP 6
 Plot the results
 
-## CODE
+
+# CODE
 
 ```
 import pandas as pd
 df=pd.read_csv("weight.csv")
 df
-```
-```
+
 df.drop("Gender",axis=1,inplace=True)
 df
-```
-```
+
 df.boxplot()
 df
-```
-```
+
 from scipy import stats
 import numpy as np
 z=np.abs(stats.zscore(df))
 cp1=df.copy()
 cp1=cp1[(z<3).all(axis=1)]
 cp1
-```
-```
+
 cp1.boxplot()
-```
-```
+
 cp2=df.copy()
 a=cp2.quantile(0.25)
 b=cp2.quantile(0.75)
